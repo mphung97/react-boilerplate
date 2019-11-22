@@ -27,7 +27,9 @@ const config = {
     extensions: ['*', '.js', '.scss', '.css']
   },
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
+      // config to split code
       chunks: 'all'
       // cacheGroups: {
       //   styles: {
