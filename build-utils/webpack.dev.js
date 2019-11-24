@@ -21,9 +21,12 @@ const config = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              localsConvention: 'camelCase',
-              sourceMap: true
+              modules: {
+                localIdentName: '[sha1:hash:hex:4]'
+              },
+              localsConvention:'camelCase',
+              sourceMap: true,
+              importLoaders: 1
             }
           },
           {
