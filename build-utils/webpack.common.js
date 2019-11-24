@@ -7,7 +7,8 @@ const config = {
   },
   output: {
     path: paths.outputPath,
-    publicPath: '/'
+    publicPath: '/',
+    filename: '[name].[contenthash].js',
   },
   module: {
     rules: [
@@ -29,25 +30,31 @@ const config = {
   optimization: {
     runtimeChunk: 'single',
     splitChunks: {
-      // config to split code
-      chunks: 'all'
-      // cacheGroups: {
-      //   styles: {
-      //     name: 'styles',
-      //     test: /\.(scss|sass|css)$/,
-      //     chunks: 'all',
-      //     enforce: true
-      //   },
-      //   vendor: {
-      //     chunks: 'initial',
-      //     test: 'vendor',
-      //     name: 'vendor',
-      //     enforce: true
-      //   }
-      // }
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.(scss|sass|css)$/,
+          enforce: true
+        },
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get the name. E.g. node_modules/packageName/not/this/part.js
+            // or node_modules/packageName
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+            // npm package names are URL-safe, but some servers don't like @ symbols
+
+            return `npm.${packageName.replace('@', '')}`;
+          },
+        },
+      },
     }
   },
   plugins: [
+    new webpack.HashedModuleIdsPlugin(),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       minify: {
