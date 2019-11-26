@@ -5,7 +5,6 @@ import Home from './Home';
 import DynamicPage from './DynamicPage';
 import NoMatch from './NoMatch';
 
-
 const App = () => {
   return (
     <Router>

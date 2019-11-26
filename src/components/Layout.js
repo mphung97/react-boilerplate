@@ -4,10 +4,19 @@ import { Link } from 'react-router-dom';
 import { pullRight, h1, asdhashas, asdhashas1, asdhashas2, asdhashas3, asdhashas4 } from './layout.scss';
 
 const Layout = ({ children }) => {
+  function test() {
+    fetch('../../README.md')
+      .then(
+        res => res.text()
+      )
+      .then(
+        md => console.log(md)
+      )
+  }
   return (
     <div >
       <Link to="/">
-        <div as="h1" className={`${h1} ${pullRight} ${asdhashas1} ${asdhashas} ${asdhashas2} ${asdhashas3} ${asdhashas4}`}>
+        <div className={`${h1} ${asdhashas1} ${asdhashas} ${asdhashas2} ${asdhashas3} ${asdhashas4}`}>
           webpack-for-react
         </div>
       </Link>

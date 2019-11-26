@@ -13,19 +13,20 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(scss|sass|css)$/,
         use: [
           {
-            // We configure 'MiniCssExtractPlugin'              
             loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              importLoaders: 1,
+              modules: {
+                localIdentName: '[sha1:hash:hex:4]'
+              },
               localsConvention: 'camelCase',
-              sourceMap: true
+              sourceMap: true,
+              importLoaders: 1
             }
           },
           {
@@ -40,7 +41,8 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'styles/styles.[hash].css'
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css'
     })
   ]
 };
