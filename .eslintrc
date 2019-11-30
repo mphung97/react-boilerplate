@@ -24,8 +24,9 @@
 	"rules": {
 		"indent": [
 			"error",
-			4
+			2
 		],
+		"import/no-dynamic-require": "off",
 		"space-before-function-paren": "off",
 		"react/prefer-stateless-function": "warn",
 		"react/jsx-one-expression-per-line": "off",

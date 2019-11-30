@@ -1,7 +1,7 @@
+const webpackMerge = require('webpack-merge');
+
 const buildValidations = require('./build-utils/build-validations');
 const commonConfig = require('./build-utils/webpack.common');
-
-const webpackMerge = require('webpack-merge');
 
 // We can include Webpack plugins, through addons, that do 
 // not need to run every time we are developing.
@@ -9,10 +9,10 @@ const webpackMerge = require('webpack-merge');
 const addons = (/* string | string[] */ addonsArg) => {
 
   // Normalize array of addons (flatten)
-  let addons = [...[addonsArg]]
+  const addonsArr = [...[addonsArg]]
     .filter(Boolean); // If addons is undefined, filter it out
 
-  return addons.map(addonName =>
+  return addonsArr.map(addonName =>
     require(`./build-utils/addons/webpack.${addonName}.js`)
   );
 };
