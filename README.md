@@ -1,5 +1,1 @@
-# react-boilerplate
-
-## react webpack sass
-
-use NodeJS v10+
+# My react boilerpalte
