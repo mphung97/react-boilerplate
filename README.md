@@ -1,1 +1,1 @@
-# My react boilerpalte
+# my react boilerpalte
