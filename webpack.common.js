@@ -1,25 +1,25 @@
-const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const paths = require('./common-paths');
 
 const config = {
   entry: {
+    index: './src/index.js',
   },
   output: {
-    path: paths.outputPath,
+    path: path.join(__dirname, '/build'),
     publicPath: '/',
     filename: '[name].[contenthash].js',
   },
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.html$/,
-        use: ['html-loader']
+        use: ['html-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
@@ -29,14 +29,24 @@ const config = {
           },
         ],
       },
-    ]
+      {
+        test: /.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: './', // where the fonts will go
+              publicPath: './', // override the default path
+            },
+          },
+        ],
+      },
+    ],
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.scss', '.css'],
-    alias: {
-      '@': paths.appEntry,
-    }
+    extensions: ['*', '.js', '.jsx', '.scss', '.css'],
   },
   optimization: {
     runtimeChunk: 'single',
@@ -48,26 +58,27 @@ const config = {
         styles: {
           name: 'styles',
           test: /\.(scss|sass|css)$/,
-          enforce: true
+          enforce: true,
         },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name(module) {
             // get the name. E.g. node_modules/packageName/not/this/part.js
             // or node_modules/packageName
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+            )[1];
             // npm package names are URL-safe, but some servers don't like @ symbols
-
             return `npm.${packageName.replace('@', '')}`;
           },
         },
       },
-    }
+    },
   },
   plugins: [
-    new webpack.HashedModuleIdsPlugin(),
+    // new webpack.HashedModuleIdsPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: path.join(__dirname, 'public/index.html'),
       minify: {
         collapseInlineTagWhitespace: true,
         collapseWhitespace: true,
@@ -76,9 +87,9 @@ const config = {
         minifyCSS: true,
         minifyURLs: true,
         removeComments: true,
-        removeAttributeQuotes: true
-      }
-    })
-  ]
+        removeAttributeQuotes: true,
+      },
+    }),
+  ],
 };
 module.exports = config;

@@ -1,14 +1,15 @@
 const webpack = require('webpack');
-const paths = require('./common-paths');
+const path = require('path');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4567;
+
 const config = {
   mode: 'development',
   entry: {
-    app: `${paths.appEntry}/index.js`
+    app: path.join(__dirname, '/src/index.js'),
   },
   output: {
-    filename: '[name].[hash].js'
+    filename: '[name].[hash].js',
   },
   devtool: 'inline-source-map',
   module: {
@@ -17,35 +18,28 @@ const config = {
         test: /\.(scss|sass|css)$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
             loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]'
-              },
-            }
           },
           {
-            loader: 'postcss-loader'
+            loader: 'postcss-loader',
           },
           {
-            loader: 'sass-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'sass-loader',
+          },
+        ],
+      },
+    ],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     host: 'localhost',
     port,
     historyApiFallback: true,
     hot: true,
-    open: false
-  }
+    open: false,
+  },
 };
 module.exports = config;
