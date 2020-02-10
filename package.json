@@ -9,6 +9,10 @@
     "prebuild": "rimraf build",
     "build": "cross-env webpack --mode=production"
   },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
@@ -41,9 +45,5 @@
   },
   "keywords": [],
   "author": "mphung97",
-  "license": "ISC",
-  "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  }
+  "license": "ISC"
 }
