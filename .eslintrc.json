@@ -13,6 +13,7 @@
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
+    "parser": "babel-eslint",
     "ecmaFeatures": {
       "jsx": true
     },
@@ -27,6 +28,6 @@
         "extensions": [".js", ".jsx"]
       }
     ],
-    "linebreak-style": 0
+    "linebreak-style": 0,
   }
 }

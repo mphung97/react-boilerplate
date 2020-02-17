@@ -1,0 +1,123 @@
+.calendar__main {
+  max-width: 325px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  user-select: none;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 325px;
+  border: 1px solid rgba(89, 89, 89, 0.2);
+  border-radius: 4px;
+  margin: 0 auto;
+  color: #151522;
+}
+
+.calendar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 43px;
+  border-bottom: 1px solid rgba(89, 89, 89, 0.2);
+}
+
+.calendar__month-year {
+  flex: 1 1 0%;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.calendar__main-wrapper {
+  padding: 0 1.25rem 1rem;
+}
+
+.calendar__week-day {
+  font-size: 0.6875rem;
+}
+
+.calendar__main {
+  table-layout: fixed;
+}
+
+.calendar__main thead tr > *,
+.calendar__main tbody tr > * {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  font-size: 13px;
+  text-align: center;
+  font-weight: normal;
+  line-height: 30px;
+  border: 1px solid transparent;
+  color: #6979f8;
+  border-radius: 4px;
+}
+
+.calendar__main tbody tr > *:hover:not(.empty) {
+  background-color: #9ba6fa;
+  color: #fff;
+}
+
+.calendar__main thead tr > * {
+  color: #666666;
+  font-size: 11px;
+}
+
+.calendar__main tbody tr > *.select {
+  background-color: #6979f8;
+  color: #fff;
+}
+
+.calendar__main tbody tr > *.calendar-day {
+  border-radius: 50%;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #151522;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+.btn:hover {
+  color: #151522;
+  text-decoration: none;
+}
+.btn:focus,
+.btn.focus {
+  outline: 0;
+  /* box-shadow: 0 0 0 0.2rem rgba(0, 132, 244, 0.25); */
+}
+
+svg {
+  vertical-align: middle;
+}
+
+.btn--month-year {
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+}
