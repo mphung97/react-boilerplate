@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('./SanFranciscoDisplay-Light.otf');
+    font-weight: 200;
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Display';
+    src: url('./SanFranciscoDisplay-Regular.otf');
+    font-weight: 400;
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Display';
+    src: url('./SanFranciscoDisplay-Semibold.otf');
+    font-weight: 600;
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Display';
+    src: url('./SanFranciscoDisplay-Bold.otf');
+    font-weight: 700;
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Text';
+    src: url('./SanFranciscoText-Light.otf');
+    font-weight: 200;
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Text';
+    src: url('./SanFranciscoText-Regular.otf');
+    font-weight: 400;
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Text';
+    src: url('./SanFranciscoText-Medium.otf');
+    font-weight: 500;
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Text';
+    src: url('./SanFranciscoText-Semibold.otf');
+    font-weight: 600;
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Text';
+    src: url('./SanFranciscoText-Bold.otf');
+    font-weight: 700;
+  }

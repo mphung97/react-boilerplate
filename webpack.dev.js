@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const port = process.env.PORT || 4567;
 
@@ -18,13 +19,10 @@ const config = {
         test: /\.(scss|sass|css)$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
-          },
-          {
-            loader: 'postcss-loader',
           },
           {
             loader: 'sass-loader',
@@ -33,7 +31,15 @@ const config = {
       },
     ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
   devServer: {
     host: 'localhost',
     port,
